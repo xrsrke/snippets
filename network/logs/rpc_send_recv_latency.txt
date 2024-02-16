@@ -1,0 +1,146 @@
+local_rank: 0
+local_rank: 1
+
+
+
+----------- [Trial 0][M=512, N=512, size=1.00 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.004 sec
+ algbw: 1.995 Gbps
+ busbw: 1.995 Gbps
+
+
+
+----------- [Trial 1][M=512, N=512, size=1.00 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 10.364 Gbps
+ busbw: 10.364 Gbps
+
+
+
+----------- [Trial 0][M=1144, N=1144, size=4.99 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 44.177 Gbps
+ busbw: 44.177 Gbps
+
+
+
+----------- [Trial 1][M=1144, N=1144, size=4.99 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 62.472 Gbps
+ busbw: 62.472 Gbps
+
+
+
+----------- [Trial 0][M=1619, N=1619, size=10.00 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 103.203 Gbps
+ busbw: 103.203 Gbps
+
+
+
+----------- [Trial 1][M=1619, N=1619, size=10.00 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 118.960 Gbps
+ busbw: 118.960 Gbps
+
+
+
+----------- [Trial 0][M=3620, N=3620, size=49.99 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 413.193 Gbps
+ busbw: 413.193 Gbps
+
+
+
+----------- [Trial 1][M=3620, N=3620, size=49.99 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 488.733 Gbps
+ busbw: 488.733 Gbps
+
+
+
+----------- [Trial 0][M=5120, N=5120, size=100.00 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 654.150 Gbps
+ busbw: 654.150 Gbps
+
+
+
+----------- [Trial 1][M=5120, N=5120, size=100.00 MB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.001 sec
+ algbw: 827.997 Gbps
+ busbw: 827.997 Gbps
+
+
+
+----------- [Trial 0][M=16384, N=16384, size=1.00 GB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.007 sec
+ algbw: 1287.201 Gbps
+ busbw: 1287.201 Gbps
+
+
+
+----------- [Trial 1][M=16384, N=16384, size=1.00 GB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.004 sec
+ algbw: 1927.529 Gbps
+ busbw: 1927.529 Gbps
+
+
+
+----------- [Trial 0][M=36635, N=36635, size=5.00 GB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.020 sec
+ algbw: 2131.850 Gbps
+ busbw: 2131.850 Gbps
+
+
+
+----------- [Trial 1][M=36635, N=36635, size=5.00 GB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.022 sec
+ algbw: 1973.760 Gbps
+ busbw: 1973.760 Gbps
+
+
+
+----------- [Trial 0][M=73271, N=73271, size=20.00 GB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.098 sec
+ algbw: 1753.919 Gbps
+ busbw: 1753.919 Gbps
+
+
+
+----------- [Trial 1][M=73271, N=73271, size=20.00 GB GB] ----------------
+Received data
+ip-26-0-169-132:0:
+ duration: 0.097 sec
+ algbw: 1771.098 Gbps
+ busbw: 1771.098 Gbps
