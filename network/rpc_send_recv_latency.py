@@ -1,30 +1,22 @@
-#!/usr/bin/env python
-
-# this is derived from the all_reduce_bench.py
-# but adjusted to show how 1x 4GB reduction is much faster than 1000x 4MB reduction
-#
-# to run on 8 gpus:
-# python -u -m torch.distributed.run --nproc_per_node=8 all_reduce_latency_comp.py
-
 import os
-import math
 import socket
 import torch
 import torch.distributed as dist
+import torch.distributed.rpc as rpc
 
 from utils import calculate_dimensions, bytes_to_nice_format
 
+def recv_tensor(data):
+    print("Received data")
 
-def timed_send_recv(data, id, start_event, end_event):
-    rank = dist.get_rank()
-    
+WORKER_NAME = "RPC_GLOBAL_WORKER_{}"
+
+
+def timed_send_recv(data, id, start_event, end_event):    
     start_event.record()
-    for i in range(1):
-        if rank == 0:
-            dist.send(tensor=data, dst=1)
-        elif rank == 1:
-            dist.recv(tensor=data, src=0)
-        
+    for _ in range(1):
+        rpc.rpc_sync(to=WORKER_NAME.format(1), func=recv_tensor, args=(data,))
+    
     end_event.record()
 
     torch.cuda.synchronize()
@@ -38,12 +30,11 @@ def timed_send_recv(data, id, start_event, end_event):
     # busbw reflects how optimally the hardware is used
     busbw = algbw * (2*(n - 1) / n)
     
-    if dist.get_rank() == 0:
-        print(f"{id}:\n",
-                f"duration: {duration:.3f} sec\n",
-                f"algbw: {algbw/1e9:.3f} Gbps\n",
-                f"busbw: {busbw / 1e9:.3f} Gbps"
-        )
+    print(f"{id}:\n",
+            f"duration: {duration:.3f} sec\n",
+            f"algbw: {algbw/1e9:.3f} Gbps\n",
+            f"busbw: {busbw / 1e9:.3f} Gbps"
+    )
 
 
 
@@ -53,38 +44,46 @@ def run(local_rank):
 
     hostname = socket.gethostname()
     id = f"{hostname}:{local_rank}"
-    global_rank = dist.get_rank()
 
     sizes = calculate_dimensions(input_sizes)
     
-    dist.barrier()
-    for M, N in sizes:
-        dist.barrier()
-        
+    for M, N in sizes:        
         # NOTE: these emulate the payload which will become a M * N * 4-sized tensor below
-        if global_rank == 0:
-            data = torch.rand(N, M, dtype=torch.float32).cuda(local_rank)
-        elif global_rank == 1:
-            data = torch.empty(N, M, dtype=torch.float32).cuda(local_rank)
-                
+        data = torch.rand(N, M, dtype=torch.float32).cuda(local_rank)
+  
         data_size = bytes_to_nice_format(data.numel() * 4)
 
         start_event = torch.cuda.Event(enable_timing=True)
         end_event = torch.cuda.Event(enable_timing=True)
         
         for trial in range(TRIALS):
-            dist.barrier()
             print(f"\n\n\n----------- [Trial {trial}][M={M}, N={N}, size={data_size} GB] ----------------")
-            
-            if global_rank == 0:
-                timed_send_recv(data, id, start_event, end_event)
-            elif global_rank == 1:
-                timed_send_recv(data, id, start_event, end_event)
+            timed_send_recv(data, id, start_event, end_event)
 
 def init_processes(local_rank, fn, backend='nccl'):
     torch.cuda.set_device(local_rank)
+    
     dist.init_process_group(backend)
-    fn(local_rank)
+    rank = int(os.environ["LOCAL_RANK"])
+    world_size = int(os.environ["WORLD_SIZE"])
+    
+    options = rpc.TensorPipeRpcBackendOptions(
+        _transports=["uv"],
+    )
+    
+    if rank == 0:
+        options.set_device_map(WORKER_NAME.format(1), {0: 1})
+    
+    rpc.init_rpc(
+        name=WORKER_NAME.format(rank), rank=rank, world_size=world_size,
+        rpc_backend_options=options
+    )
+    
+    if rank == 0:
+        fn(local_rank)
+    
+    dist.barrier()
+    rpc.shutdown()
 
 
 if __name__ == "__main__":
