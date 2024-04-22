@@ -5,10 +5,37 @@ from datetime import datetime
 import subprocess
 
 from brrr.config import (
-    BrrrConfig,
+    # BrrrConfig,
     get_config_from_file
 )
 
+from dataclasses import dataclass
+
+def set_system_path():
+    import sys
+    from pathlib import Path
+    import importlib
+    
+    package = importlib.import_module("nanotron")
+    # NOTE:  Path(package.__file__).parent = .../nanotron/src/nanotron
+    # we want .../nanotron
+    package_path = Path(package.__file__).parent.parent.parent
+    sys.path.append(str(package_path))
+
+
+from brrr.config.brrr_config import BrrrConfig
+
+set_system_path()
+
+from examples.doremi.doremi.config import DoReMiArgs
+
+
+@dataclass(kw_only=True)  # pylint: disable=unexpected-keyword-arg
+class DoReMiConfig(BrrrConfig):
+    """Main configuration class"""
+
+    doremi: DoReMiArgs
+    
 def generate_training_slurm_script(
     nodes,
     nproc_per_node,
@@ -16,7 +43,8 @@ def generate_training_slurm_script(
     config_file,
     brrr_repo_path,
     conda_path,
-    is_debug=False
+    is_debug=False,
+    script_path="use_trainer.py"
 ):
     launcher_content_list = []
     
@@ -78,7 +106,7 @@ def generate_training_slurm_script(
         
         'python -m torch.utils.collect_env\n\n'
         
-        f'CMD="{brrr_repo_path}/use_trainer.py \\\n'
+        f'CMD="{brrr_repo_path}/{script_path} \\\n'
         f'   --config-file {config_file}"\n\n'
     )
     
@@ -230,6 +258,7 @@ if __name__ == "__main__":
     args.add_argument("--no_wandb", action="store_true", help="Do not use wandb")
     # Default
     args.add_argument("--brrr_repo_path", type=str, default="/fsx/phuc/projects/reference/brrr", help="Path to the brrr repo")
+    args.add_argument("--script_path", type=str, default="use_trainer.py", help="Path to the brrr repo")
     args.add_argument("--conda_path", type=str, default="/fsx/phuc/projects/reference/env/", help="Path to the conda environment")
     args.add_argument("--hf_cache_path", type=str, default="/fsx/phuc/.cache/huggingface_cache", help="Path to the huggingface cache")
     # Slurm
@@ -238,7 +267,7 @@ if __name__ == "__main__":
     args.add_argument("--nodelist", type=str, default=None, help="List of nodes")
     args = args.parse_args()
 
-    config = get_config_from_file(args.config, config_class=BrrrConfig)
+    config = get_config_from_file(args.config, config_class=DoReMiConfig)
     
     if config.lighteval is None and args.use_lighteval:
         raise ValueError("You cannot use lighteval without lighteval config in the config file")
@@ -278,7 +307,8 @@ if __name__ == "__main__":
         config_file=yaml_config_output_path,
         brrr_repo_path=args.brrr_repo_path,
         conda_path=args.conda_path,
-        is_debug=args.debug_train
+        is_debug=args.debug_train,
+        script_path=args.script_path
     )
     
     if args.use_lighteval:
