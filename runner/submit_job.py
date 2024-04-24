@@ -5,7 +5,7 @@ from datetime import datetime
 import subprocess
 
 from brrr.config import (
-    # BrrrConfig,
+    BrrrConfig,
     get_config_from_file
 )
 
@@ -23,18 +23,18 @@ def set_system_path():
     sys.path.append(str(package_path))
 
 
-from brrr.config.brrr_config import BrrrConfig
+# from brrr.config.brrr_config import BrrrConfig
 
-set_system_path()
+# set_system_path()
 
-from examples.doremi.doremi.config import DoReMiArgs
+# from examples.doremi.doremi.config import DoReMiArgs
 
 
-@dataclass(kw_only=True)  # pylint: disable=unexpected-keyword-arg
-class DoReMiConfig(BrrrConfig):
-    """Main configuration class"""
+# @dataclass(kw_only=True)  # pylint: disable=unexpected-keyword-arg
+# class DoReMiConfig(BrrrConfig):
+#     """Main configuration class"""
 
-    doremi: DoReMiArgs
+#     doremi: DoReMiArgs
     
 def generate_training_slurm_script(
     nodes,
@@ -253,6 +253,7 @@ if __name__ == "__main__":
     
     args = argparse.ArgumentParser()
     args.add_argument("--config", type=str, required=True, help="Path to the config file")
+    args.add_argument("--no_training", action="store_false", help="Run training")
     args.add_argument("--use_lighteval", action="store_true", help="Use lighteval")
     args.add_argument("--debug_train", action="store_true", help="Debug mode")
     args.add_argument("--no_wandb", action="store_true", help="Do not use wandb")
@@ -267,7 +268,7 @@ if __name__ == "__main__":
     args.add_argument("--nodelist", type=str, default=None, help="List of nodes")
     args = args.parse_args()
 
-    config = get_config_from_file(args.config, config_class=DoReMiConfig)
+    config = get_config_from_file(args.config, config_class=BrrrConfig)
     
     if config.lighteval is None and args.use_lighteval:
         raise ValueError("You cannot use lighteval without lighteval config in the config file")
@@ -299,17 +300,18 @@ if __name__ == "__main__":
     print(f"Copying config file to {yaml_config_output_path}\n")
     subprocess.run(['cp', args.config, yaml_config_output_path], check=True)
     
-    # Generate SLURM script
-    generate_training_slurm_script(
-        nodes=args.nodes,
-        nproc_per_node=args.nproc_per_node,
-        output_path=slurm_script_output_path,
-        config_file=yaml_config_output_path,
-        brrr_repo_path=args.brrr_repo_path,
-        conda_path=args.conda_path,
-        is_debug=args.debug_train,
-        script_path=args.script_path
-    )
+    if args.no_training:
+        # Generate SLURM script
+        generate_training_slurm_script(
+            nodes=args.nodes,
+            nproc_per_node=args.nproc_per_node,
+            output_path=slurm_script_output_path,
+            config_file=yaml_config_output_path,
+            brrr_repo_path=args.brrr_repo_path,
+            conda_path=args.conda_path,
+            is_debug=args.debug_train,
+            script_path=args.script_path
+        )
     
     if args.use_lighteval:
         generate_lighteval_jinja_script(
