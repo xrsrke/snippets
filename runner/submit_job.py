@@ -4,11 +4,6 @@ import os
 from datetime import datetime
 import subprocess
 
-from brrr.config import (
-    BrrrConfig,
-    get_config_from_file
-)
-
 from dataclasses import dataclass
 
 def set_system_path():
@@ -260,6 +255,7 @@ if __name__ == "__main__":
     # Default
     args.add_argument("--brrr_repo_path", type=str, default="/fsx/phuc/projects/reference/brrr", help="Path to the brrr repo")
     args.add_argument("--script_path", type=str, default="use_trainer.py", help="Path to the brrr repo")
+    args.add_argument("--is_brrr_config", type=str, default="true", help="")
     args.add_argument("--conda_path", type=str, default="/fsx/phuc/projects/reference/env/", help="Path to the conda environment")
     args.add_argument("--hf_cache_path", type=str, default="/fsx/phuc/.cache/huggingface_cache", help="Path to the huggingface cache")
     # Slurm
@@ -268,12 +264,28 @@ if __name__ == "__main__":
     args.add_argument("--nodelist", type=str, default=None, help="List of nodes")
     args = args.parse_args()
 
-    config = get_config_from_file(args.config, config_class=BrrrConfig)
+    if args.is_brrr_config == "true":
+        from brrr.config import (
+            BrrrConfig,
+            get_config_from_file
+        )
+        config = get_config_from_file(args.config, config_class=BrrrConfig)
+    elif args.is_brrr_config == "false":
+        from nanotron.config import Config, get_config_from_file
+        config = get_config_from_file(args.config, config_class=Config)
+    else:
+        raise ValueError("is_brrr_config must be either 'true' or 'false'")
     
     if config.lighteval is None and args.use_lighteval:
         raise ValueError("You cannot use lighteval without lighteval config in the config file")
-        
-    out_dir_path = f"/fsx/phuc/new_workspace/experiments/{config.experiment_logger.wandb_logger.wandb_project}"
+    
+    if args.is_brrr_config == "true":
+        out_dir_path = f"/fsx/phuc/new_workspace/experiments/{config.experiment_logger.wandb_logger.wandb_project}"
+    elif args.is_brrr_config == "false":
+        out_dir_path = f"/fsx/phuc/new_workspace/experiments/{config.general.project}"
+    else:
+        raise ValueError("is_brrr_config must be either 'true' or 'false'")
+
     config_name = os.path.basename(args.config)
     config_name = os.path.splitext(config_name)[0]
     output_log_dir = f"{out_dir_path}/{config_name}" 
@@ -334,13 +346,14 @@ if __name__ == "__main__":
         f'--nodes={args.nodes}',
         '--ntasks-per-node=1',
         '--cpus-per-task=96',
-        '--gres=gpu:h100:8',
+        f'--gres=gpu:h100:{args.nproc_per_node}',
         '--mem-per-cpu=11G',
         '--partition=hopper-prod',
         '--array=1-100%1', # create a job array with 100 tasks and run them one by one
         f'--output={out_dir_path}/{config_name}/logs/train-%n-%j.out',
         f'--error={out_dir_path}/{config_name}/logs/train-%n-%j.out',
-        '--qos=high',
+        # '--dependency=afterany:5535476_1',  # Run after job 5535476_1 finishes or is cancelled
+        '--qos=normal',
         slurm_script_output_path
     ]
     
