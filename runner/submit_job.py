@@ -66,6 +66,10 @@ def generate_training_slurm_script(
             '    --tee 3"\n\n'
         )
         
+    # NOTE: generate a random port from the allowed range
+    import random
+    random_port = random.randint(6000, 7000)
+        
     #TODO: Do Slurm Job arrays
     slurm_template = (
         f'#!/bin/bash\n'
@@ -79,7 +83,7 @@ def generate_training_slurm_script(
         
         f'BRRR_REPO={brrr_repo_path}\n'
         'MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)\n'
-        'MASTER_PORT=6000\n'
+        f'MASTER_PORT={random_port}\n'
         'USE_SYSTEM_NCCL=1\n\n'
         
         # f'source {conda_path}/etc/profile.d/conda.sh\n'
@@ -262,6 +266,7 @@ if __name__ == "__main__":
     args.add_argument("--nodes", type=int, default=1, help="Number of nodes")
     args.add_argument("--nproc_per_node", type=int, default=1, help="Number of gpus per node")
     args.add_argument("--nodelist", type=str, default=None, help="List of nodes")
+    args.add_argument("--wait_job_id", type=str, default=None, help="Wait for the job id to finish")
     args = args.parse_args()
 
     if args.is_brrr_config == "true":
@@ -280,7 +285,8 @@ if __name__ == "__main__":
         raise ValueError("You cannot use lighteval without lighteval config in the config file")
     
     if args.is_brrr_config == "true":
-        out_dir_path = f"/fsx/phuc/new_workspace/experiments/{config.experiment_logger.wandb_logger.wandb_project}"
+        # out_dir_path = f"/fsx/phuc/new_workspace/experiments/{config.experiment_logger.wandb_logger.wandb_project}"
+        out_dir_path = f"/fsx/phuc/new_workspace/experiments/fp8_for_nanotron"
     elif args.is_brrr_config == "false":
         out_dir_path = f"/fsx/phuc/new_workspace/experiments/{config.general.project}"
     else:
@@ -296,6 +302,7 @@ if __name__ == "__main__":
         f"{output_log_dir}/checkpoints",
         f"{output_log_dir}/configs",
         f"{output_log_dir}/logs",
+        f"{output_log_dir}/logs/tb_logs",
         f"{output_log_dir}/lighteval",
         f"{output_log_dir}/lighteval/s3_tmp",
         f"{output_log_dir}/lighteval/slurm_scripts"
@@ -345,7 +352,7 @@ if __name__ == "__main__":
         f'--job-name={config_name}',
         f'--nodes={args.nodes}',
         '--ntasks-per-node=1',
-        '--cpus-per-task=96',
+        # '--cpus-per-task=96',
         f'--gres=gpu:h100:{args.nproc_per_node}',
         '--mem-per-cpu=11G',
         '--partition=hopper-prod',
@@ -356,6 +363,12 @@ if __name__ == "__main__":
         '--qos=normal',
         slurm_script_output_path
     ]
+    if args.wait_job_id is not None:
+        # NOTE: afterany: The new job should be launched after the specified job(s) have terminated, regardless of their exit status.
+        # afternotok: The new job should be launched after the specified job(s) have terminated with a non-zero exit code.
+        sbatch_command.insert(-1, f'--dependency=afterany:{args.wait_job_id}')
+    
+    print(f"Sbatch command: {' '.join(sbatch_command)}")
     
     print(
         f"Running {slurm_script_output_path} on {args.nodes} "
