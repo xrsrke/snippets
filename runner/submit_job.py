@@ -267,6 +267,10 @@ if __name__ == "__main__":
     args.add_argument("--nproc_per_node", type=int, default=1, help="Number of gpus per node")
     args.add_argument("--nodelist", type=str, default=None, help="List of nodes")
     args.add_argument("--wait_job_id", type=str, default=None, help="Wait for the job id to finish")
+    args.add_argument("--ignore-nodes", type=str, default=None, help="Nodes to ignore, e.g. 'ip-26-0-167-[217,245]'")
+    args.add_argument("--exclusive", action="store_true", help="Request exclusive access to nodes")
+
+
     args = args.parse_args()
 
     if args.is_brrr_config == "true":
@@ -363,6 +367,13 @@ if __name__ == "__main__":
         '--qos=normal',
         slurm_script_output_path
     ]
+
+    if args.exclusive:
+        sbatch_command.insert(-1, '--exclusive')
+
+    if args.ignore_nodes:
+        sbatch_command.insert(-1, f'--exclude={args.ignore_nodes}')
+
     if args.wait_job_id is not None:
         # NOTE: afterany: The new job should be launched after the specified job(s) have terminated, regardless of their exit status.
         # afternotok: The new job should be launched after the specified job(s) have terminated with a non-zero exit code.

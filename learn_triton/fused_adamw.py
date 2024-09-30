@@ -128,6 +128,7 @@ if __name__ == "__main__":
             optim.step()
         end = time.time()
         print("time elapsed: ", end - start)
+    
     print(p)
     print(p_copy)
 
