@@ -93,6 +93,8 @@ def generate_training_slurm_script(
         f'source /admin/home/phuc_nguyen/miniconda3/etc/profile.d/conda.sh\n'
         f'conda activate {conda_path}\n'
 
+
+        f"source /etc/profile.d/modules.sh\n\n"
         'module load cuda/12.1\n\n'
         
         'echo "START TIME: $(date)"\n\n'
@@ -216,6 +218,7 @@ def generate_lighteval_jinja_script(
         'echo "CUDA version: $(python -c "import torch;print(torch.version.cuda)")"\n\n'
         
        
+        f"source /etc/profile.d/modules.sh\n\n"
         "module load cuda/12.1\n\n"
         
         f'# Hugging Face token\n'
@@ -387,4 +390,21 @@ if __name__ == "__main__":
         f"gpu(s) each with config file "
         f"{yaml_config_output_path}\n"
     )
-    subprocess.run(sbatch_command, check=True, env=env_vars)
+
+    # # Create the bash command
+    # bash_command = f"source ~/.bashrc; {' '.join(sbatch_command)}"
+
+    # # Create the full command with env -i
+    # full_command = ["env", "-i", "bash", "-c", bash_command]
+
+    # First, find the full path to sbatch
+    sbatch_path = subprocess.run(['which', 'sbatch'], capture_output=True, text=True).stdout.strip()
+
+    # Create the bash command
+    bash_command = f"source ~/.bashrc; export PATH=$PATH:{os.path.dirname(sbatch_path)}; {' '.join(sbatch_command)}"
+
+    # Create the full command with env -i
+    full_command = ["env", "-i", "bash", "-c", bash_command]
+
+    # Run the command
+    subprocess.run(full_command, check=True, env=env_vars)
