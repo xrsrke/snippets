@@ -53,17 +53,19 @@ data_stages:
       - 0.4
       - 0.1
       datasets:
+      # - filename_pattern: .*.ds
+      #   folder: /fsx/loubna/tokenized_for_exps/fw_edu/fineweb-edu-full-cosmo2_merged
+      #   skip_tokens: 0
+      # - filename_pattern: .*.ds
+      #   # NOTE: lobuna deleted it
+      #   # folder: /fsx/loubna/tokenized_for_exps/fw_edu/dclm-3T-cosmo2_merged
+      #   folder: /fsx/phuc/datasets/100b_smol_ds/fw_edu_dclm_subset
+      #   skip_tokens: 0
+      # - filename_pattern: .*.ds
+      #   folder: /fsx/loubna/tokenized_for_exps/fw_edu/starcoderdata-full-cosmo_merged
+      #   skip_tokens: 0
       - filename_pattern: .*.ds
-        # folder: /fsx/loubna/tokenized_for_exps/fw_edu/fineweb-edu-full-cosmo2_merged
-        folder: /fsx/elie_bakouch/data/smollmv1
-        skip_tokens: 0
-      - filename_pattern: .*.ds
-        # NOTE: lobuna deleted it
-        # folder: /fsx/loubna/tokenized_for_exps/fw_edu/dclm-3T-cosmo2_merged
-        folder: /fsx/phuc/datasets/100b_smol_ds/fw_edu_dclm_subset
-        skip_tokens: 0
-      - filename_pattern: .*.ds
-        folder: /fsx/loubna/tokenized_for_exps/fw_edu/starcoderdata-full-cosmo_merged
+        folder: /fsx/loubna/tokenized_for_exps/fw_edu/starcoder2data-score-4-plus-cosmo_merged
         skip_tokens: 0
       pad_samples_to_global_batch_size: false
       skip_in_stream: true
@@ -142,7 +144,7 @@ optimizer:
 
 parallelism:
   # large batch training
-  dp: 1
+  dp: 8
   tp: 1
   # dp: 2
   # tp: 2
@@ -1748,7 +1750,7 @@ fp8:
   update_clipping: true
 
   skip_param_update_if_nan: true
-  is_directly_keep_accum_grad_of_fp8: true
+  is_directly_keep_accum_grad_of_fp8: false
 
 s3_upload:
   remove_after_upload: true

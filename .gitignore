@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 runner/wandb/*
+
+experiment_configs/nanotron_profiling/*

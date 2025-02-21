@@ -271,6 +271,7 @@ if __name__ == "__main__":
     args.add_argument("--nodelist", type=str, default=None, help="List of nodes")
     args.add_argument("--wait_job_id", type=str, default=None, help="Wait for the job id to finish")
     args.add_argument("--ignore-nodes", type=str, default=None, help="Nodes to ignore, e.g. 'ip-26-0-167-[217,245]'")
+    args.add_argument("--ignore-clean-env", type=str, default="false", help="")
     args.add_argument("--exclusive", action="store_true", help="Request exclusive access to nodes")
 
 
@@ -391,20 +392,13 @@ if __name__ == "__main__":
         f"{yaml_config_output_path}\n"
     )
 
+    # # First, find the full path to sbatch
+    # sbatch_path = subprocess.run(['which', 'sbatch'], capture_output=True, text=True).stdout.strip()
     # # Create the bash command
-    # bash_command = f"source ~/.bashrc; {' '.join(sbatch_command)}"
-
+    # bash_command = f"source ~/.bashrc; export PATH=$PATH:{os.path.dirname(sbatch_path)}; {' '.join(sbatch_command)}"
     # # Create the full command with env -i
     # full_command = ["env", "-i", "bash", "-c", bash_command]
 
-    # First, find the full path to sbatch
-    sbatch_path = subprocess.run(['which', 'sbatch'], capture_output=True, text=True).stdout.strip()
-
-    # Create the bash command
-    bash_command = f"source ~/.bashrc; export PATH=$PATH:{os.path.dirname(sbatch_path)}; {' '.join(sbatch_command)}"
-
-    # Create the full command with env -i
-    full_command = ["env", "-i", "bash", "-c", bash_command]
-
-    # Run the command
-    subprocess.run(full_command, check=True, env=env_vars)
+    # # Run the command
+    # subprocess.run(full_command, check=True, env=env_vars)
+    subprocess.run(sbatch_command, check=True, env=env_vars)
