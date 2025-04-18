@@ -39,7 +39,8 @@ def generate_training_slurm_script(
     brrr_repo_path,
     conda_path,
     is_debug=False,
-    script_path="use_trainer.py"
+    script_path="use_trainer.py",
+    git_commit=None
 ):
     launcher_content_list = []
     
@@ -118,6 +119,14 @@ def generate_training_slurm_script(
             )
     else:
         slurm_template += f'{launcher_content_list[0]}\n'
+        
+    if git_commit is not None:
+        slurm_template += (
+            f'cd {brrr_repo_path}\n'
+            f'git fetch\n'
+            f'git checkout {git_commit}\n\n'
+            'echo "[checkout to a target commit] Git commit: $(git rev-parse HEAD)"\n\n'
+        )
 
     slurm_template += (        
         'echo $CMD\n'
@@ -273,7 +282,7 @@ if __name__ == "__main__":
     args.add_argument("--ignore-nodes", type=str, default=None, help="Nodes to ignore, e.g. 'ip-26-0-167-[217,245]'")
     args.add_argument("--ignore-clean-env", type=str, default="false", help="")
     args.add_argument("--exclusive", action="store_true", help="Request exclusive access to nodes")
-
+    args.add_argument("--git_commit", type=str, default=None, help="git commit")
 
     args = args.parse_args()
 
@@ -337,7 +346,8 @@ if __name__ == "__main__":
             brrr_repo_path=args.brrr_repo_path,
             conda_path=args.conda_path,
             is_debug=args.debug_train,
-            script_path=args.script_path
+            script_path=args.script_path,
+            git_commit=args.git_commit
         )
     
     if args.use_lighteval:
