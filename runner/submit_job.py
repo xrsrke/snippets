@@ -40,7 +40,8 @@ def generate_training_slurm_script(
     conda_path,
     is_debug=False,
     script_path="use_trainer.py",
-    git_commit=None
+    git_commit=None,
+    uv_env_path=None
 ):
     launcher_content_list = []
     
@@ -82,20 +83,17 @@ def generate_training_slurm_script(
         'export CUDA_DEVICE_MAX_CONNECTIONS=1\n\n'
         
         
-        f'BRRR_REPO={brrr_repo_path}\n'
-        'MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)\n'
-        f'MASTER_PORT={random_port}\n'
-        'USE_SYSTEM_NCCL=1\n\n'
-        
-        # f'source {conda_path}/etc/profile.d/conda.sh\n'
-        # f'conda activate {conda_path}/envs/env-brrr\n'
+        f'BRRR_REPO={brrr_repo_path}\n' + \
+        'MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)\n' + \
+        f'MASTER_PORT={random_port}\n' + \
+        'USE_SYSTEM_NCCL=1\n\n' + \
 
-        # f'conda init bash\n'
-        f'source /admin/home/phuc_nguyen/miniconda3/etc/profile.d/conda.sh\n'
-        f'conda activate {conda_path}\n'
+        # Modified environment activation section
+        (f'source {uv_env_path}/bin/activate\n' if uv_env_path else 
+        f'source /admin/home/phuc_nguyen/miniconda3/etc/profile.d/conda.sh\n' + \
+        f'conda activate {conda_path}\n') + \
 
-
-        f"source /etc/profile.d/modules.sh\n\n"
+        f"source /etc/profile.d/modules.sh\n\n" + \
         'module load cuda/12.1\n\n'
         
         'echo "START TIME: $(date)"\n\n'
@@ -273,6 +271,8 @@ if __name__ == "__main__":
     args.add_argument("--script_path", type=str, default="use_trainer.py", help="Path to the brrr repo")
     args.add_argument("--is_brrr_config", type=str, default="true", help="")
     args.add_argument("--conda_path", type=str, default="/fsx/phuc/projects/reference/env/", help="Path to the conda environment")
+    args.add_argument("--uv_env_path", type=str, default=None, 
+                     help="Path to UV environment to activate instead of conda")
     args.add_argument("--hf_cache_path", type=str, default="/fsx/phuc/.cache/huggingface_cache", help="Path to the huggingface cache")
     # Slurm
     args.add_argument("--nodes", type=int, default=1, help="Number of nodes")
@@ -347,7 +347,8 @@ if __name__ == "__main__":
             conda_path=args.conda_path,
             is_debug=args.debug_train,
             script_path=args.script_path,
-            git_commit=args.git_commit
+            git_commit=args.git_commit,
+            uv_env_path=args.uv_env_path
         )
     
     if args.use_lighteval:
