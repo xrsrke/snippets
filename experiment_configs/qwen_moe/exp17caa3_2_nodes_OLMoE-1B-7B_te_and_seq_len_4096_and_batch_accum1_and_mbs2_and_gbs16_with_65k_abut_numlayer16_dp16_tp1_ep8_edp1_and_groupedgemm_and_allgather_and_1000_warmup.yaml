@@ -32,7 +32,7 @@ general:
   consumed_train_samples: null
   ignore_sanity_checks: true
   project: qwen_moe
-  run: exp17aa4_OLMoE-1B-7B_te_and_seq_len_4096_and_batch_accum1_and_mbs2_and_gbs16_with_65k_abut_numlayer16_dp8_tp1_ep8_edp1_and_groupedgemm_and_alltoall
+  run: exp17caa3_2_nodes_OLMoE-1B-7B_te_and_seq_len_4096_and_batch_accum1_and_mbs2_and_gbs16_with_65k_abut_numlayer16_dp16_tp1_ep8_edp1_and_groupedgemm_and_allgather_and_1000_warmup
   seed: 42
   step: null
 lighteval: null
@@ -89,11 +89,11 @@ model:
       shared_expert_intermediate_size: 1024
       router_aux_loss_coef: 0.01
       enable_shared_expert: false
-      token_dispatcher_type: alltoall
+      token_dispatcher_type: allgather
       moe_impl: transformer_engine
 
       router_load_balancing_type: aux_loss
-      permute_fusion: false
+      permute_fusion: true
       grouped_gemm_imple: megablock_grouped_gemm
       bias_activation_fusion: False
       # moe_z_loss_coeff: null
@@ -106,7 +106,7 @@ optimizer:
     lr_decay_starting_step: null
     lr_decay_steps: 31998
     lr_decay_style: cosine
-    lr_warmup_steps: 2
+    lr_warmup_steps: 1000
     lr_warmup_style: linear
     min_decay_lr: 4.0e-5
   optimizer_factory:
@@ -125,10 +125,10 @@ parallelism:
   # expert_parallel_size: 4
   # expert_data_parallel_size: 1
 
-  dp: 8
+  dp: 16
   tp: 1
   expert_parallel_size: 8
-  expert_data_parallel_size: 1
+  expert_data_parallel_size: 2
 
   pp: 1
   pp_engine: 1f1b

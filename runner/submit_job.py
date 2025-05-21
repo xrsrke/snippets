@@ -43,6 +43,7 @@ def generate_training_slurm_script(
     git_commit=None,
     uv_env_path=None
 ):
+    print(f"Generating training SLURM script to {output_path}\n")
     launcher_content_list = []
     
     if is_debug:
@@ -75,6 +76,14 @@ def generate_training_slurm_script(
     #TODO: Do Slurm Job arrays
     slurm_template = (
         f'#!/bin/bash\n'
+        # f'#SBATCH --job-name={os.path.splitext(os.path.basename(output_path))[0]}\n'
+        # f'#SBATCH --nodes={nodes}\n'
+        # '#SBATCH --ntasks-per-node=1\n'
+        # '#SBATCH --partition=hopper-prod\n'
+        # f'#SBATCH --gres=gpu:{nproc_per_node}\n'
+        # '#SBATCH --cpus-per-task=32\n'
+        f'#SBATCH --output={os.path.dirname(output_path)}/logs/%x-%n-%j.out\n'
+        f'#SBATCH --error={os.path.dirname(output_path)}/logs/%x-%n-%j.out\n'
         'set -x -e\n\n'
         
         'source ~/.bashrc\n'
@@ -283,6 +292,8 @@ if __name__ == "__main__":
     args.add_argument("--ignore-clean-env", type=str, default="false", help="")
     args.add_argument("--exclusive", action="store_true", help="Request exclusive access to nodes")
     args.add_argument("--git_commit", type=str, default=None, help="git commit")
+    args.add_argument("--reservation_name", type=str, default=None, 
+                     help="SLURM reservation name to use")
 
     args = args.parse_args()
 
@@ -371,18 +382,18 @@ if __name__ == "__main__":
         f'--job-name={config_name}',
         f'--nodes={args.nodes}',
         '--ntasks-per-node=1',
-        # '--cpus-per-task=96',
         f'--gres=gpu:h100:{args.nproc_per_node}',
         '--mem-per-cpu=11G',
         '--partition=hopper-prod',
-        '--array=1-100%1', # create a job array with 100 tasks and run them one by one
-        f'--output={out_dir_path}/{config_name}/logs/train-%n-%j.out',
-        f'--error={out_dir_path}/{config_name}/logs/train-%n-%j.out',
-        # '--dependency=afterany:5535476_1',  # Run after job 5535476_1 finishes or is cancelled
-        '--qos=normal',
-        slurm_script_output_path
+        '--array=1-100%1',
     ]
 
+    # Add reservation if specified
+    if args.reservation_name:
+        print(f"Adding reservation {args.reservation_name} to sbatch command")
+        sbatch_command.append(f'--reservation={args.reservation_name}')
+        
+    # Continue with existing parameters
     if args.exclusive:
         sbatch_command.insert(-1, '--exclusive')
 
