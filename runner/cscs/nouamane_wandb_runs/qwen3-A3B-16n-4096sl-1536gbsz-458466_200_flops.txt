@@ -1,0 +1,1763 @@
+{
+  "lr": {
+    "desc": null,
+    "value": 0.0003
+  },
+  "fp8": {
+    "desc": null,
+    "value": null
+  },
+  "bf16": {
+    "desc": null,
+    "value": true
+  },
+  "fp16": {
+    "desc": null,
+    "value": false
+  },
+  "load": {
+    "desc": null,
+    "value": "/iopsstor/scratch/cscs/nforouta/projects/Megatron-LM/logs/Meg-Runs/qwen3-A3B/qwen3-A3B-16n-4096sl-1536gbsz/checkpoints"
+  },
+  "rank": {
+    "desc": null,
+    "value": 63
+  },
+  "save": {
+    "desc": null,
+    "value": "/iopsstor/scratch/cscs/nforouta/projects/Megatron-LM/logs/Meg-Runs/qwen3-A3B/qwen3-A3B-16n-4096sl-1536gbsz/checkpoints"
+  },
+  "seed": {
+    "desc": null,
+    "value": 28
+  },
+  "spec": {
+    "desc": null,
+    "value": null
+  },
+  "img_h": {
+    "desc": null,
+    "value": 224
+  },
+  "img_w": {
+    "desc": null,
+    "value": 224
+  },
+  "split": {
+    "desc": null,
+    "value": "100,0,0"
+  },
+  "xielu": {
+    "desc": null,
+    "value": false
+  },
+  "_wandb": {
+    "desc": null,
+    "value": {
+      "t": {
+        "1": [
+          1,
+          5,
+          11,
+          41,
+          49,
+          53,
+          55
+        ],
+        "3": [
+          13,
+          16,
+          23,
+          42,
+          55
+        ],
+        "4": "3.12.3",
+        "5": "0.19.11",
+        "6": "4.52.2",
+        "8": [
+          5
+        ],
+        "13": "linux-aarch64"
+      },
+      "framework": "huggingface",
+      "start_time": 1747931830,
+      "cli_version": "0.19.11",
+      "is_jupyter_run": false,
+      "python_version": "3.12.3",
+      "is_kaggle_kernel": false,
+      "huggingface_version": "4.52.2"
+    }
+  },
+  "min_lr": {
+    "desc": null,
+    "value": 0.00003
+  },
+  "swiglu": {
+    "desc": null,
+    "value": true
+  },
+  "profile": {
+    "desc": null,
+    "value": false
+  },
+  "xiprelu": {
+    "desc": null,
+    "value": false
+  },
+  "adam_eps": {
+    "desc": null,
+    "value": 1e-8
+  },
+  "finetune": {
+    "desc": null,
+    "value": false
+  },
+  "ict_load": {
+    "desc": null,
+    "value": null
+  },
+  "xiprelup": {
+    "desc": null,
+    "value": false
+  },
+  "yaml_cfg": {
+    "desc": null,
+    "value": null
+  },
+  "bert_load": {
+    "desc": null,
+    "value": null
+  },
+  "ckpt_step": {
+    "desc": null,
+    "value": null
+  },
+  "clip_grad": {
+    "desc": null,
+    "value": 1
+  },
+  "data_path": {
+    "desc": null,
+    "value": null
+  },
+  "fp8_wgrad": {
+    "desc": null,
+    "value": true
+  },
+  "manual_gc": {
+    "desc": null,
+    "value": true
+  },
+  "mask_prob": {
+    "desc": null,
+    "value": 0.15
+  },
+  "mask_type": {
+    "desc": null,
+    "value": "random"
+  },
+  "mock_data": {
+    "desc": null,
+    "value": true
+  },
+  "onnx_safe": {
+    "desc": null,
+    "value": null
+  },
+  "optimizer": {
+    "desc": null,
+    "value": "adam"
+  },
+  "patch_dim": {
+    "desc": null,
+    "value": 16
+  },
+  "test_mode": {
+    "desc": null,
+    "value": false
+  },
+  "adam_beta1": {
+    "desc": null,
+    "value": 0.9
+  },
+  "adam_beta2": {
+    "desc": null,
+    "value": 0.95
+  },
+  "async_save": {
+    "desc": null,
+    "value": true
+  },
+  "eval_iters": {
+    "desc": null,
+    "value": 0
+  },
+  "fp8_margin": {
+    "desc": null,
+    "value": 0
+  },
+  "goldfish_h": {
+    "desc": null,
+    "value": 50
+  },
+  "goldfish_k": {
+    "desc": null,
+    "value": 50
+  },
+  "hysteresis": {
+    "desc": null,
+    "value": 2
+  },
+  "local_rank": {
+    "desc": null,
+    "value": 3
+  },
+  "loss_scale": {
+    "desc": null,
+    "value": null
+  },
+  "merge_file": {
+    "desc": null,
+    "value": null
+  },
+  "num_layers": {
+    "desc": null,
+    "value": 48
+  },
+  "rerun_mode": {
+    "desc": null,
+    "value": "disabled"
+  },
+  "seq_length": {
+    "desc": null,
+    "value": 4096
+  },
+  "skip_train": {
+    "desc": null,
+    "value": false
+  },
+  "v_head_dim": {
+    "desc": null,
+    "value": 128
+  },
+  "vocab_file": {
+    "desc": null,
+    "value": null
+  },
+  "vocab_size": {
+    "desc": null,
+    "value": null
+  },
+  "world_size": {
+    "desc": null,
+    "value": 64
+  },
+  "ckpt_format": {
+    "desc": null,
+    "value": "torch_dist"
+  },
+  "hidden_size": {
+    "desc": null,
+    "value": 2048
+  },
+  "kv_channels": {
+    "desc": null,
+    "value": 64
+  },
+  "mask_factor": {
+    "desc": null,
+    "value": 1
+  },
+  "no_load_rng": {
+    "desc": null,
+    "value": null
+  },
+  "no_save_rng": {
+    "desc": null,
+    "value": null
+  },
+  "num_classes": {
+    "desc": null,
+    "value": 1000
+  },
+  "num_experts": {
+    "desc": null,
+    "value": 128
+  },
+  "num_workers": {
+    "desc": null,
+    "value": 2
+  },
+  "openai_gelu": {
+    "desc": null,
+    "value": false
+  },
+  "q_lora_rank": {
+    "desc": null,
+    "value": null
+  },
+  "qk_head_dim": {
+    "desc": null,
+    "value": 128
+  },
+  "qknorm_impl": {
+    "desc": null,
+    "value": "te"
+  },
+  "replication": {
+    "desc": null,
+    "value": false
+  },
+  "rotary_base": {
+    "desc": null,
+    "value": 1000000
+  },
+  "sample_rate": {
+    "desc": null,
+    "value": 1
+  },
+  "train_iters": {
+    "desc": null,
+    "value": 48441
+  },
+  "add_qkv_bias": {
+    "desc": null,
+    "value": false
+  },
+  "cp_comm_type": {
+    "desc": null,
+    "value": [
+      "p2p"
+    ]
+  },
+  "decoupled_lr": {
+    "desc": null,
+    "value": null
+  },
+  "exit_trigger": {
+    "desc": null,
+    "value": "/dev/null/exit"
+  },
+  "flash_decode": {
+    "desc": null,
+    "value": false
+  },
+  "fp8_interval": {
+    "desc": null,
+    "value": 1
+  },
+  "head_lr_mult": {
+    "desc": null,
+    "value": 1
+  },
+  "kv_lora_rank": {
+    "desc": null,
+    "value": 32
+  },
+  "log_interval": {
+    "desc": null,
+    "value": 1
+  },
+  "log_progress": {
+    "desc": null,
+    "value": true
+  },
+  "norm_epsilon": {
+    "desc": null,
+    "value": 0.00001
+  },
+  "num_channels": {
+    "desc": null,
+    "value": 3
+  },
+  "params_dtype": {
+    "desc": null,
+    "value": "torch.bfloat16"
+  },
+  "qk_layernorm": {
+    "desc": null,
+    "value": false
+  },
+  "save_trigger": {
+    "desc": null,
+    "value": "/dev/null/save"
+  },
+  "sgd_momentum": {
+    "desc": null,
+    "value": 0.9
+  },
+  "squared_relu": {
+    "desc": null,
+    "value": false
+  },
+  "trigger_path": {
+    "desc": null,
+    "value": "/dev/null"
+  },
+  "weight_decay": {
+    "desc": null,
+    "value": 0.1
+  },
+  "data_sharding": {
+    "desc": null,
+    "value": true
+  },
+  "eod_mask_loss": {
+    "desc": null,
+    "value": false
+  },
+  "eval_interval": {
+    "desc": null,
+    "value": 1000
+  },
+  "exit_interval": {
+    "desc": null,
+    "value": null
+  },
+  "exp_avg_dtype": {
+    "desc": null,
+    "value": "torch.float32"
+  },
+  "goldfish_loss": {
+    "desc": null,
+    "value": false
+  },
+  "ict_head_size": {
+    "desc": null,
+    "value": null
+  },
+  "lazy_mpu_init": {
+    "desc": null,
+    "value": null
+  },
+  "log_straggler": {
+    "desc": null,
+    "value": false
+  },
+  "logging_level": {
+    "desc": null,
+    "value": null
+  },
+  "mlp_layernorm": {
+    "desc": null,
+    "value": true
+  },
+  "no_load_optim": {
+    "desc": null,
+    "value": null
+  },
+  "no_save_optim": {
+    "desc": null,
+    "value": null
+  },
+  "normalization": {
+    "desc": null,
+    "value": "RMSNorm"
+  },
+  "profile_ranks": {
+    "desc": null,
+    "value": [
+      0
+    ]
+  },
+  "s3_cache_path": {
+    "desc": null,
+    "value": null
+  },
+  "save_interval": {
+    "desc": null,
+    "value": 1000
+  },
+  "train_samples": {
+    "desc": null,
+    "value": null
+  },
+  "use_dist_ckpt": {
+    "desc": null,
+    "value": true
+  },
+  "wandb_project": {
+    "desc": null,
+    "value": "qwen3-A3B"
+  },
+  "ademamix_alpha": {
+    "desc": null,
+    "value": 5
+  },
+  "ademamix_beta3": {
+    "desc": null,
+    "value": 0.999
+  },
+  "attn_layernorm": {
+    "desc": null,
+    "value": true
+  },
+  "data_args_path": {
+    "desc": null,
+    "value": null
+  },
+  "embedding_path": {
+    "desc": null,
+    "value": null
+  },
+  "hidden_dropout": {
+    "desc": null,
+    "value": 0
+  },
+  "iter_per_epoch": {
+    "desc": null,
+    "value": 1250
+  },
+  "layernorm_init": {
+    "desc": null,
+    "value": null
+  },
+  "log_throughput": {
+    "desc": null,
+    "value": true
+  },
+  "lr_decay_iters": {
+    "desc": null,
+    "value": null
+  },
+  "lr_decay_style": {
+    "desc": null,
+    "value": "cosine"
+  },
+  "lr_warmup_init": {
+    "desc": null,
+    "value": 0
+  },
+  "manual_gc_eval": {
+    "desc": null,
+    "value": true
+  },
+  "min_loss_scale": {
+    "desc": null,
+    "value": 1
+  },
+  "mmap_bin_files": {
+    "desc": null,
+    "value": true
+  },
+  "moe_layer_freq": {
+    "desc": null,
+    "value": 1
+  },
+  "rotary_percent": {
+    "desc": null,
+    "value": 1
+  },
+  "short_seq_prob": {
+    "desc": null,
+    "value": 0.1
+  },
+  "te_rng_tracker": {
+    "desc": null,
+    "value": false
+  },
+  "test_data_path": {
+    "desc": null,
+    "value": null
+  },
+  "tokenizer_type": {
+    "desc": null,
+    "value": "HuggingFaceTokenizer"
+  },
+  "use_flash_attn": {
+    "desc": null,
+    "value": false
+  },
+  "wandb_exp_name": {
+    "desc": null,
+    "value": "qwen3-A3B-16n-4096sl-1536gbsz-458466"
+  },
+  "wandb_save_dir": {
+    "desc": null,
+    "value": "/iopsstor/scratch/cscs/nforouta/projects/Megatron-LM/logs/Meg-Runs/qwen3-A3B/qwen3-A3B-16n-4096sl-1536gbsz/logging"
+  },
+  "add_bias_linear": {
+    "desc": null,
+    "value": false
+  },
+  "adlr_autoresume": {
+    "desc": null,
+    "value": false
+  },
+  "block_data_path": {
+    "desc": null,
+    "value": null
+  },
+  "data_cache_path": {
+    "desc": null,
+    "value": null
+  },
+  "dataloader_type": {
+    "desc": null,
+    "value": "single"
+  },
+  "ddp_bucket_size": {
+    "desc": null,
+    "value": null
+  },
+  "ffn_hidden_size": {
+    "desc": null,
+    "value": 6144
+  },
+  "final_layernorm": {
+    "desc": null,
+    "value": true
+  },
+  "init_method_std": {
+    "desc": null,
+    "value": 0.008944
+  },
+  "log_params_norm": {
+    "desc": null,
+    "value": false
+  },
+  "lr_warmup_iters": {
+    "desc": null,
+    "value": 2000
+  },
+  "moe_extended_tp": {
+    "desc": null,
+    "value": false
+  },
+  "moe_router_topk": {
+    "desc": null,
+    "value": 8
+  },
+  "post_layer_norm": {
+    "desc": null,
+    "value": false
+  },
+  "tensorboard_dir": {
+    "desc": null,
+    "value": "/iopsstor/scratch/cscs/nforouta/projects/Megatron-LM/logs/Meg-Runs/qwen3-A3B/qwen3-A3B-16n-4096sl-1536gbsz/logging/tensorboard"
+  },
+  "tokenizer_model": {
+    "desc": null,
+    "value": "tj-solergibert/swai"
+  },
+  "tp_comm_overlap": {
+    "desc": null,
+    "value": false
+  },
+  "train_data_path": {
+    "desc": null,
+    "value": null
+  },
+  "use_torch_fsdp2": {
+    "desc": null,
+    "value": false
+  },
+  "valid_data_path": {
+    "desc": null,
+    "value": null
+  },
+  "vocab_extra_ids": {
+    "desc": null,
+    "value": 0
+  },
+  "app_tag_run_name": {
+    "desc": null,
+    "value": null
+  },
+  "bert_binary_head": {
+    "desc": null,
+    "value": true
+  },
+  "bias_gelu_fusion": {
+    "desc": null,
+    "value": false
+  },
+  "calc_ft_timeouts": {
+    "desc": null,
+    "value": false
+  },
+  "classes_fraction": {
+    "desc": null,
+    "value": 1
+  },
+  "decoupled_min_lr": {
+    "desc": null,
+    "value": null
+  },
+  "end_weight_decay": {
+    "desc": null,
+    "value": 0.1
+  },
+  "exp_avg_sq_dtype": {
+    "desc": null,
+    "value": "torch.float32"
+  },
+  "fp8_param_gather": {
+    "desc": null,
+    "value": false
+  },
+  "hybrid_mlp_ratio": {
+    "desc": null,
+    "value": 0
+  },
+  "lr_decay_samples": {
+    "desc": null,
+    "value": null
+  },
+  "main_grads_dtype": {
+    "desc": null,
+    "value": "torch.bfloat16"
+  },
+  "micro_batch_size": {
+    "desc": null,
+    "value": 1
+  },
+  "moe_grouped_gemm": {
+    "desc": null,
+    "value": true
+  },
+  "moe_z_loss_coeff": {
+    "desc": null,
+    "value": null
+  },
+  "num_query_groups": {
+    "desc": null,
+    "value": 4
+  },
+  "one_logger_async": {
+    "desc": null,
+    "value": false
+  },
+  "overlap_p2p_comm": {
+    "desc": null,
+    "value": false
+  },
+  "profile_step_end": {
+    "desc": null,
+    "value": 12
+  },
+  "recompute_method": {
+    "desc": null,
+    "value": null
+  },
+  "replication_jump": {
+    "desc": null,
+    "value": null
+  },
+  "tiktoken_pattern": {
+    "desc": null,
+    "value": null
+  },
+  "timing_log_level": {
+    "desc": null,
+    "value": 0
+  },
+  "titles_data_path": {
+    "desc": null,
+    "value": null
+  },
+  "tp_comm_split_ag": {
+    "desc": null,
+    "value": true
+  },
+  "tp_comm_split_rs": {
+    "desc": null,
+    "value": true
+  },
+  "transformer_impl": {
+    "desc": null,
+    "value": "transformer_engine"
+  },
+  "use_rope_scaling": {
+    "desc": null,
+    "value": true
+  },
+  "align_grad_reduce": {
+    "desc": null,
+    "value": true
+  },
+  "apply_rope_fusion": {
+    "desc": null,
+    "value": true
+  },
+  "attention_backend": {
+    "desc": null,
+    "value": "auto"
+  },
+  "attention_dropout": {
+    "desc": null,
+    "value": 0
+  },
+  "ckpt_convert_save": {
+    "desc": null,
+    "value": null
+  },
+  "config_logger_dir": {
+    "desc": null,
+    "value": ""
+  },
+  "dino_teacher_temp": {
+    "desc": null,
+    "value": 0.07
+  },
+  "enable_cuda_graph": {
+    "desc": null,
+    "value": false
+  },
+  "enable_ft_package": {
+    "desc": null,
+    "value": false
+  },
+  "enable_one_logger": {
+    "desc": null,
+    "value": true
+  },
+  "global_batch_size": {
+    "desc": null,
+    "value": 1536
+  },
+  "loss_scale_window": {
+    "desc": null,
+    "value": 1000
+  },
+  "lr_warmup_samples": {
+    "desc": null,
+    "value": 0
+  },
+  "main_params_dtype": {
+    "desc": null,
+    "value": "torch.float32"
+  },
+  "max_tokens_to_oom": {
+    "desc": null,
+    "value": 12000
+  },
+  "moe_use_upcycling": {
+    "desc": null,
+    "value": false
+  },
+  "padded_vocab_size": {
+    "desc": null,
+    "value": 131072
+  },
+  "rampup_batch_size": {
+    "desc": null,
+    "value": null
+  },
+  "retro_project_dir": {
+    "desc": null,
+    "value": null
+  },
+  "sequence_parallel": {
+    "desc": null,
+    "value": false
+  },
+  "timing_log_option": {
+    "desc": null,
+    "value": "minmax"
+  },
+  "use_legacy_models": {
+    "desc": null,
+    "value": false
+  },
+  "use_one_sent_docs": {
+    "desc": null,
+    "value": false
+  },
+  "align_param_gather": {
+    "desc": null,
+    "value": false
+  },
+  "apply_layernorm_1p": {
+    "desc": null,
+    "value": false
+  },
+  "bert_embedder_type": {
+    "desc": null,
+    "value": "megatron"
+  },
+  "bias_swiglu_fusion": {
+    "desc": null,
+    "value": true
+  },
+  "data_parallel_size": {
+    "desc": null,
+    "value": 32
+  },
+  "decoder_num_layers": {
+    "desc": null,
+    "value": null
+  },
+  "decoder_seq_length": {
+    "desc": null,
+    "value": null
+  },
+  "deterministic_mode": {
+    "desc": null,
+    "value": false
+  },
+  "encoder_num_layers": {
+    "desc": null,
+    "value": 48
+  },
+  "encoder_seq_length": {
+    "desc": null,
+    "value": 4096
+  },
+  "evidence_data_path": {
+    "desc": null,
+    "value": null
+  },
+  "indexer_batch_size": {
+    "desc": null,
+    "value": 128
+  },
+  "initial_loss_scale": {
+    "desc": null,
+    "value": 4294967296
+  },
+  "lr_warmup_fraction": {
+    "desc": null,
+    "value": null
+  },
+  "lr_wsd_decay_iters": {
+    "desc": null,
+    "value": null
+  },
+  "lr_wsd_decay_style": {
+    "desc": null,
+    "value": "1-sqrt"
+  },
+  "manual_gc_interval": {
+    "desc": null,
+    "value": 5000
+  },
+  "moe_aux_loss_coeff": {
+    "desc": null,
+    "value": 0.001
+  },
+  "one_logger_project": {
+    "desc": null,
+    "value": "megatron-lm"
+  },
+  "profile_step_start": {
+    "desc": null,
+    "value": 10
+  },
+  "replication_factor": {
+    "desc": null,
+    "value": 2
+  },
+  "reset_position_ids": {
+    "desc": null,
+    "value": false
+  },
+  "rotary_interleaved": {
+    "desc": null,
+    "value": false
+  },
+  "start_weight_decay": {
+    "desc": null,
+    "value": 0.1
+  },
+  "swin_backbone_type": {
+    "desc": null,
+    "value": "tiny"
+  },
+  "tp_comm_bulk_dgrad": {
+    "desc": null,
+    "value": true
+  },
+  "tp_comm_bulk_wgrad": {
+    "desc": null,
+    "value": true
+  },
+  "tp_comm_overlap_ag": {
+    "desc": null,
+    "value": true
+  },
+  "tp_comm_overlap_rs": {
+    "desc": null,
+    "value": true
+  },
+  "vision_pretraining": {
+    "desc": null,
+    "value": false
+  },
+  "app_tag_run_version": {
+    "desc": null,
+    "value": "0.0.0"
+  },
+  "bias_dropout_fusion": {
+    "desc": null,
+    "value": true
+  },
+  "ckpt_convert_format": {
+    "desc": null,
+    "value": null
+  },
+  "dino_local_img_size": {
+    "desc": null,
+    "value": 96
+  },
+  "distributed_backend": {
+    "desc": null,
+    "value": "nccl"
+  },
+  "exit_signal_handler": {
+    "desc": null,
+    "value": false
+  },
+  "moe_ffn_hidden_size": {
+    "desc": null,
+    "value": 768
+  },
+  "moe_layer_recompute": {
+    "desc": null,
+    "value": false
+  },
+  "num_attention_heads": {
+    "desc": null,
+    "value": 32
+  },
+  "one_logger_run_name": {
+    "desc": null,
+    "value": null
+  },
+  "overlap_grad_reduce": {
+    "desc": null,
+    "value": true
+  },
+  "qk_pos_emb_head_dim": {
+    "desc": null,
+    "value": 64
+  },
+  "query_in_block_prob": {
+    "desc": null,
+    "value": 0.1
+  },
+  "retro_add_retriever": {
+    "desc": null,
+    "value": false
+  },
+  "retro_num_neighbors": {
+    "desc": null,
+    "value": 2
+  },
+  "rope_scaling_factor": {
+    "desc": null,
+    "value": 32
+  },
+  "tp_comm_overlap_cfg": {
+    "desc": null,
+    "value": null
+  },
+  "train_sync_interval": {
+    "desc": null,
+    "value": null
+  },
+  "use_checkpoint_args": {
+    "desc": null,
+    "value": false
+  },
+  "barrier_with_L1_time": {
+    "desc": null,
+    "value": true
+  },
+  "check_for_spiky_loss": {
+    "desc": null,
+    "value": false
+  },
+  "dino_bottleneck_size": {
+    "desc": null,
+    "value": 256
+  },
+  "dino_norm_last_layer": {
+    "desc": null,
+    "value": false
+  },
+  "dist_ckpt_strictness": {
+    "desc": null,
+    "value": "assume_ok_unexpected"
+  },
+  "error_injection_rate": {
+    "desc": null,
+    "value": 0
+  },
+  "error_injection_type": {
+    "desc": null,
+    "value": "transient_error"
+  },
+  "fp8_amax_history_len": {
+    "desc": null,
+    "value": 1
+  },
+  "indexer_log_interval": {
+    "desc": null,
+    "value": 1000
+  },
+  "lr_wsd_decay_samples": {
+    "desc": null,
+    "value": null
+  },
+  "memory_snapshot_path": {
+    "desc": null,
+    "value": "snapshot.pickle"
+  },
+  "moe_input_jitter_eps": {
+    "desc": null,
+    "value": null
+  },
+  "overlap_param_gather": {
+    "desc": null,
+    "value": true
+  },
+  "recompute_num_layers": {
+    "desc": null,
+    "value": null
+  },
+  "reset_attention_mask": {
+    "desc": null,
+    "value": false
+  },
+  "retriever_seq_length": {
+    "desc": null,
+    "value": 256
+  },
+  "retro_attention_gate": {
+    "desc": null,
+    "value": 1
+  },
+  "retro_encoder_layers": {
+    "desc": null,
+    "value": 2
+  },
+  "straggler_ctrlr_port": {
+    "desc": null,
+    "value": 65535
+  },
+  "use_pytorch_profiler": {
+    "desc": null,
+    "value": false
+  },
+  "use_tp_pp_dp_mapping": {
+    "desc": null,
+    "value": false
+  },
+  "variable_seq_lengths": {
+    "desc": null,
+    "value": false
+  },
+  "vision_backbone_type": {
+    "desc": null,
+    "value": "vit"
+  },
+  "wgrad_deferral_limit": {
+    "desc": null,
+    "value": 50
+  },
+  "ademamix_alpha_warmup": {
+    "desc": null,
+    "value": -1
+  },
+  "ademamix_beta3_warmup": {
+    "desc": null,
+    "value": -1
+  },
+  "context_parallel_size": {
+    "desc": null,
+    "value": 1
+  },
+  "dino_head_hidden_size": {
+    "desc": null,
+    "value": 2048
+  },
+  "exit_duration_in_mins": {
+    "desc": null,
+    "value": null
+  },
+  "fp16_lm_cross_entropy": {
+    "desc": null,
+    "value": false
+  },
+  "fp8_amax_compute_algo": {
+    "desc": null,
+    "value": "most_recent"
+  },
+  "group_query_attention": {
+    "desc": null,
+    "value": true
+  },
+  "inference_rng_tracker": {
+    "desc": null,
+    "value": false
+  },
+  "log_num_zeros_in_grad": {
+    "desc": null,
+    "value": false
+  },
+  "masked_softmax_fusion": {
+    "desc": null,
+    "value": true
+  },
+  "moe_per_layer_logging": {
+    "desc": null,
+    "value": false
+  },
+  "moe_token_drop_policy": {
+    "desc": null,
+    "value": "probs"
+  },
+  "no_persist_layer_norm": {
+    "desc": null,
+    "value": false
+  },
+  "pretrained_checkpoint": {
+    "desc": null,
+    "value": null
+  },
+  "recompute_granularity": {
+    "desc": null,
+    "value": null
+  },
+  "record_memory_history": {
+    "desc": null,
+    "value": false
+  },
+  "rotary_scaling_factor": {
+    "desc": null,
+    "value": 1
+  },
+  "skipped_train_samples": {
+    "desc": null,
+    "value": 0
+  },
+  "use_ring_exchange_p2p": {
+    "desc": null,
+    "value": false
+  },
+  "add_position_embedding": {
+    "desc": null,
+    "value": true
+  },
+  "consumed_train_samples": {
+    "desc": null,
+    "value": 0
+  },
+  "consumed_valid_samples": {
+    "desc": null,
+    "value": 0
+  },
+  "dino_freeze_last_layer": {
+    "desc": null,
+    "value": 1
+  },
+  "hybrid_attention_ratio": {
+    "desc": null,
+    "value": 0
+  },
+  "moe_router_pre_softmax": {
+    "desc": null,
+    "value": true
+  },
+  "multi_latent_attention": {
+    "desc": null,
+    "value": false
+  },
+  "output_bert_embeddings": {
+    "desc": null,
+    "value": false
+  },
+  "perform_initialization": {
+    "desc": null,
+    "value": true
+  },
+  "straggler_minmax_count": {
+    "desc": null,
+    "value": 1
+  },
+  "tensorboard_queue_size": {
+    "desc": null,
+    "value": 1000
+  },
+  "use_cpu_initialization": {
+    "desc": null,
+    "value": null
+  },
+  "auto_detect_ckpt_format": {
+    "desc": null,
+    "value": false
+  },
+  "cuda_graph_warmup_steps": {
+    "desc": null,
+    "value": 2
+  },
+  "data_per_class_fraction": {
+    "desc": null,
+    "value": 1
+  },
+  "dino_local_crops_number": {
+    "desc": null,
+    "value": 10
+  },
+  "hybrid_override_pattern": {
+    "desc": null,
+    "value": null
+  },
+  "max_position_embeddings": {
+    "desc": null,
+    "value": 40960
+  },
+  "position_embedding_type": {
+    "desc": null,
+    "value": "rope"
+  },
+  "retriever_score_scaling": {
+    "desc": null,
+    "value": false
+  },
+  "tiktoken_special_tokens": {
+    "desc": null,
+    "value": null
+  },
+  "vision_pretraining_type": {
+    "desc": null,
+    "value": "classify"
+  },
+  "weight_decay_incr_style": {
+    "desc": null,
+    "value": "constant"
+  },
+  "adlr_autoresume_interval": {
+    "desc": null,
+    "value": 1000
+  },
+  "biencoder_projection_dim": {
+    "desc": null,
+    "value": 0
+  },
+  "calculate_per_token_loss": {
+    "desc": null,
+    "value": false
+  },
+  "ckpt_fully_parallel_load": {
+    "desc": null,
+    "value": false
+  },
+  "ckpt_fully_parallel_save": {
+    "desc": null,
+    "value": true
+  },
+  "dino_warmup_teacher_temp": {
+    "desc": null,
+    "value": 0.04
+  },
+  "fp32_residual_connection": {
+    "desc": null,
+    "value": false
+  },
+  "inference_max_seq_length": {
+    "desc": null,
+    "value": 2560
+  },
+  "non_persistent_ckpt_type": {
+    "desc": null,
+    "value": null
+  },
+  "per_split_data_args_path": {
+    "desc": null,
+    "value": null
+  },
+  "retro_cyclic_train_iters": {
+    "desc": null,
+    "value": null
+  },
+  "tensorboard_log_interval": {
+    "desc": null,
+    "value": 1
+  },
+  "tp_comm_overlap_rs_dgrad": {
+    "desc": null,
+    "value": false
+  },
+  "use_dist_ckpt_deprecated": {
+    "desc": null,
+    "value": false
+  },
+  "attention_softmax_in_fp32": {
+    "desc": null,
+    "value": false
+  },
+  "cross_entropy_loss_fusion": {
+    "desc": null,
+    "value": true
+  },
+  "data_parallel_random_init": {
+    "desc": null,
+    "value": false
+  },
+  "ddp_average_in_collective": {
+    "desc": null,
+    "value": false
+  },
+  "empty_unused_memory_level": {
+    "desc": null,
+    "value": 0
+  },
+  "log_memory_to_tensorboard": {
+    "desc": null,
+    "value": true
+  },
+  "log_params_norm_per_param": {
+    "desc": null,
+    "value": false
+  },
+  "log_timers_to_tensorboard": {
+    "desc": null,
+    "value": true
+  },
+  "moe_router_score_function": {
+    "desc": null,
+    "value": "softmax"
+  },
+  "moe_shared_expert_overlap": {
+    "desc": null,
+    "value": false
+  },
+  "moe_token_dispatcher_type": {
+    "desc": null,
+    "value": "alltoall"
+  },
+  "tp_comm_bootstrap_backend": {
+    "desc": null,
+    "value": "nccl"
+  },
+  "use_distributed_optimizer": {
+    "desc": null,
+    "value": true
+  },
+  "exit_on_missing_checkpoint": {
+    "desc": null,
+    "value": false
+  },
+  "expert_model_parallel_size": {
+    "desc": null,
+    "value": 2
+  },
+  "init_method_xavier_uniform": {
+    "desc": null,
+    "value": false
+  },
+  "moe_expert_capacity_factor": {
+    "desc": null,
+    "value": null
+  },
+  "retro_num_retrieved_chunks": {
+    "desc": null,
+    "value": 2
+  },
+  "tensor_model_parallel_size": {
+    "desc": null,
+    "value": 1
+  },
+  "deprecated_use_mcore_models": {
+    "desc": null,
+    "value": false
+  },
+  "dist_ckpt_format_deprecated": {
+    "desc": null,
+    "value": null
+  },
+  "distributed_timeout_minutes": {
+    "desc": null,
+    "value": 10
+  },
+  "expert_tensor_parallel_size": {
+    "desc": null,
+    "value": 2
+  },
+  "input_embeddings_multiplier": {
+    "desc": null,
+    "value": 1
+  },
+  "moe_router_bias_update_rate": {
+    "desc": null,
+    "value": 0.001
+  },
+  "moe_use_legacy_grouped_gemm": {
+    "desc": null,
+    "value": false
+  },
+  "num_dataset_builder_threads": {
+    "desc": null,
+    "value": 1
+  },
+  "retro_verify_neighbor_count": {
+    "desc": null,
+    "value": true
+  },
+  "tiktoken_num_special_tokens": {
+    "desc": null,
+    "value": 1000
+  },
+  "disable_straggler_on_startup": {
+    "desc": null,
+    "value": false
+  },
+  "distribute_saved_activations": {
+    "desc": null,
+    "value": false
+  },
+  "gradient_accumulation_fusion": {
+    "desc": null,
+    "value": true
+  },
+  "make_vocab_size_divisible_by": {
+    "desc": null,
+    "value": 128
+  },
+  "non_persistent_save_interval": {
+    "desc": null,
+    "value": null
+  },
+  "override_opt_param_scheduler": {
+    "desc": null,
+    "value": false
+  },
+  "pipeline_model_parallel_size": {
+    "desc": null,
+    "value": 2
+  },
+  "retro_encoder_hidden_dropout": {
+    "desc": null,
+    "value": 0.1
+  },
+  "apply_query_key_layer_scaling": {
+    "desc": null,
+    "value": false
+  },
+  "decrease_batch_size_if_needed": {
+    "desc": null,
+    "value": false
+  },
+  "defer_embedding_wgrad_compute": {
+    "desc": null,
+    "value": false
+  },
+  "log_loss_scale_to_tensorboard": {
+    "desc": null,
+    "value": false
+  },
+  "log_world_size_to_tensorboard": {
+    "desc": null,
+    "value": false
+  },
+  "moe_router_enable_expert_bias": {
+    "desc": null,
+    "value": false
+  },
+  "nccl_communicator_config_path": {
+    "desc": null,
+    "value": null
+  },
+  "non_persistent_local_ckpt_dir": {
+    "desc": null,
+    "value": null
+  },
+  "overlap_p2p_comm_warmup_flush": {
+    "desc": null,
+    "value": false
+  },
+  "use_precision_aware_optimizer": {
+    "desc": null,
+    "value": true
+  },
+  "check_for_nan_in_loss_and_grad": {
+    "desc": null,
+    "value": false
+  },
+  "ckpt_assume_constant_structure": {
+    "desc": null,
+    "value": false
+  },
+  "moe_router_load_balancing_type": {
+    "desc": null,
+    "value": "aux_loss"
+  },
+  "moe_router_topk_scaling_factor": {
+    "desc": null,
+    "value": null
+  },
+  "non_persistent_global_ckpt_dir": {
+    "desc": null,
+    "value": null
+  },
+  "non_persistent_local_ckpt_algo": {
+    "desc": null,
+    "value": "fully_parallel"
+  },
+  "relative_attention_num_buckets": {
+    "desc": null,
+    "value": 32
+  },
+  "use_rotary_position_embeddings": {
+    "desc": null,
+    "value": false
+  },
+  "dino_warmup_teacher_temp_epochs": {
+    "desc": null,
+    "value": 30
+  },
+  "moe_router_topk_limited_devices": {
+    "desc": null,
+    "value": null
+  },
+  "relative_attention_max_distance": {
+    "desc": null,
+    "value": 128
+  },
+  "retro_encoder_attention_dropout": {
+    "desc": null,
+    "value": 0.1
+  },
+  "decoder_last_pipeline_num_layers": {
+    "desc": null,
+    "value": null
+  },
+  "moe_pad_expert_input_to_capacity": {
+    "desc": null,
+    "value": false
+  },
+  "retriever_report_topk_accuracies": {
+    "desc": null,
+    "value": []
+  },
+  "use_mp_args_from_checkpoint_args": {
+    "desc": null,
+    "value": false
+  },
+  "clone_scatter_output_in_embedding": {
+    "desc": null,
+    "value": true
+  },
+  "decoder_first_pipeline_num_layers": {
+    "desc": null,
+    "value": null
+  },
+  "log_validation_ppl_to_tensorboard": {
+    "desc": null,
+    "value": false
+  },
+  "account_for_loss_in_pipeline_split": {
+    "desc": null,
+    "value": false
+  },
+  "accumulate_allreduce_grads_in_fp32": {
+    "desc": null,
+    "value": false
+  },
+  "encoder_tensor_model_parallel_size": {
+    "desc": null,
+    "value": 0
+  },
+  "microbatch_group_size_per_vp_stage": {
+    "desc": null,
+    "value": null
+  },
+  "pipeline_model_parallel_split_rank": {
+    "desc": null,
+    "value": null
+  },
+  "scatter_gather_tensors_in_pipeline": {
+    "desc": null,
+    "value": true
+  },
+  "use_checkpoint_opt_param_scheduler": {
+    "desc": null,
+    "value": false
+  },
+  "ckpt_fully_parallel_save_deprecated": {
+    "desc": null,
+    "value": false
+  },
+  "create_attention_mask_in_dataloader": {
+    "desc": null,
+    "value": true
+  },
+  "hierarchical_context_parallel_sizes": {
+    "desc": null,
+    "value": null
+  },
+  "moe_shared_expert_intermediate_size": {
+    "desc": null,
+    "value": null
+  },
+  "num_distributed_optimizer_instances": {
+    "desc": null,
+    "value": 1
+  },
+  "rotary_seq_len_interpolation_factor": {
+    "desc": null,
+    "value": null
+  },
+  "untie_embeddings_and_output_weights": {
+    "desc": null,
+    "value": true
+  },
+  "biencoder_shared_query_context_model": {
+    "desc": null,
+    "value": false
+  },
+  "encoder_pipeline_model_parallel_size": {
+    "desc": null,
+    "value": 0
+  },
+  "num_virtual_stages_per_pipeline_rank": {
+    "desc": null,
+    "value": null
+  },
+  "virtual_pipeline_model_parallel_size": {
+    "desc": null,
+    "value": null
+  },
+  "async_tensor_model_parallel_allreduce": {
+    "desc": null,
+    "value": true
+  },
+  "num_layers_per_virtual_pipeline_stage": {
+    "desc": null,
+    "value": null
+  },
+  "inference_batch_times_seqlen_threshold": {
+    "desc": null,
+    "value": -1
+  },
+  "account_for_embedding_in_pipeline_split": {
+    "desc": null,
+    "value": false
+  },
+  "apply_residual_connection_post_layernorm": {
+    "desc": null,
+    "value": false
+  },
+  "overlap_param_gather_with_optimizer_step": {
+    "desc": null,
+    "value": false
+  },
+  "transformer_pipeline_model_parallel_size": {
+    "desc": null,
+    "value": 2
+  },
+  "use_tokenizer_model_from_checkpoint_args": {
+    "desc": null,
+    "value": true
+  },
+  "ckpt_convert_update_legacy_dist_opt_format": {
+    "desc": null,
+    "value": false
+  },
+  "check_weight_hash_across_dp_replicas_interval": {
+    "desc": null,
+    "value": null
+  }
+}
